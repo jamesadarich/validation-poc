@@ -1,0 +1,24 @@
+{
+   "compilerOptions": {
+      "target": "es5",
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "outDir": "dist",
+      "jsx": "react",
+      "declaration": true,
+      "experimentalDecorators": true,
+      "noImplicitAny": true,
+      "sourceMap": true,
+      "lib": [ "es5", "dom" ],
+      "newLine": "LF"
+   },
+   "buildOnSave": false,
+   "compileOnSave": true,
+   "exclude": [
+      "./**/*.d.ts",
+      "node_modules"
+   ],
+   "include": [
+      "./**/*.ts"
+   ]
+}

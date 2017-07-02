@@ -1,0 +1,13 @@
+# TypeScript
+*.js.map
+*.ts
+!*.d.ts
+
+# TypeScript config
+tsconfig.json
+
+# Git
+.gitignore
+
+# Source files
+src

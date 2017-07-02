@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+        <script>
+            function updateValidationMessages() {
+                document.getElementById("messages").innerHTML = messagesFor(example).map(message => `<li>${message}</li>`).join("");
+            }
+        </script>
+        <input type="text" onchange="example.name = event.target.value; console.log(isValid(example)); updateValidationMessages()" />
+        <ul id="messages">
+        </ul>
+
+        <div id="react-example">
+        </div>
+        <script type="text/javascript" src="../dist/main.js"></script>
+    </body>
+</html>
