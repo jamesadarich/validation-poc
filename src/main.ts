@@ -2,6 +2,8 @@ import "reflect-metadata";
 import { Example } from "./demos/example";
 import { isValid } from "./validation/is-valid";
 import { messagesFor } from "./validation/messages-for";
+import { MinLength } from "./decorators/min-length";
+import { Required } from "./decorators/required";
 
 const example = new Example();
  
@@ -11,3 +13,9 @@ const example = new Example();
 
 import "./demos/react-example";
 
+export {
+    isValid,
+    messagesFor,
+    Required,
+    MinLength
+}
