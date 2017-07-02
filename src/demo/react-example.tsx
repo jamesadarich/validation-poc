@@ -9,20 +9,23 @@ class InputExample extends React.Component<any, any> {
         super();
 
         this.state = {
-            errorMessages: []
+            errorMessages: [],
+            value: ""
         };
     }
 
     onChange(event: any) {
-        (window as any).example.name = (event.target as any).value;
+        (window as any).example[this.props.property] = (event.target as any).value;
         this.setState({
+            value: (event.target as any).value,
             errorMessages: messagesFor((window as any).example)
         })
     }
 
     render() {
         return <div>
-                 <input type="text" name="name" onChange={this.onChange.bind(this)} />
+                <Value>{(window as any).example[this.props.property]}</Value>
+                 <input type="text" name="name" value={this.state.value} onChange={this.onChange.bind(this)} />
                  <ul>
                     { this.state.errorMessages.map((message: string) => <li>{message}</li>) }
                  </ul>
@@ -30,10 +33,15 @@ class InputExample extends React.Component<any, any> {
     }
 }
 
+class Value extends React.Component {
+    render () {
+        return <p>Value: {this.props.children}</p>;
+    }
+}
+
 ReactDOM.render(
     <div>
-        <p>Value: {(window as any).example.name}</p>
-        <InputExample />
+        <InputExample property="name" />
    </div>,
    document.getElementById("react-example")
 );
