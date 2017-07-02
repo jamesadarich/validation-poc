@@ -4,7 +4,7 @@ import { ValidationRules } from "../_symbols/validation-rules";
 export function Required(target: object, decoratedPropertyKey: string, descriptor?: TypedPropertyDescriptor<() => any>) {
     let validationRules: Array<IValidationRule> = Reflect.getMetadata(ValidationRules, target) || [];
 
-    validationRules.push({
+    validationRules.unshift({
         isValid: (o) => o[decoratedPropertyKey],
         propertyKey: decoratedPropertyKey,
         message: "must be set"
