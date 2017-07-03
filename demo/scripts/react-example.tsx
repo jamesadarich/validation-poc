@@ -48,6 +48,7 @@ ReactDOM.render(
     <div>
         <InputExample object={user} property="givenName" label="First Name" />
         <InputExample object={user} property="familyName" label="Last Name" />
+        <InputExample object={user} property="emailAddress" label="Email" />
     </div>,
    document.getElementById("react-example")
 );

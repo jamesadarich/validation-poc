@@ -1,4 +1,4 @@
-import { MinLength, Required } from "../../src/main";
+import { MinLength, Required, EmailAddress } from "../../src/main";
 
 export class Example {
     
@@ -9,4 +9,8 @@ export class Example {
     @Required
     @MinLength(3)
     familyName: string;
+
+    @Required
+    @EmailAddress
+    emailAddress: string;
 }
