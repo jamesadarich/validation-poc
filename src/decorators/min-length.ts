@@ -6,7 +6,7 @@ export function MinLength(minimumLength: number) {
         let validationRules: Array<IValidationRule> = Reflect.getMetadata(ValidationRules, target) || [];
 
         validationRules.unshift({
-            isValid: (o) => o[decoratedPropertyKey].length >= minimumLength,
+            isValid: (o) => o[decoratedPropertyKey] ? o[decoratedPropertyKey].length >= minimumLength : false,
             propertyKey: decoratedPropertyKey,
             message: "must be at least " + minimumLength + " characters"
         });

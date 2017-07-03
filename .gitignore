@@ -8,5 +8,8 @@ debug.log*
 *.js.map
 *.d.ts
 
+# Demo
+!webpack.config.js
+
 # Compiled files
 dist
