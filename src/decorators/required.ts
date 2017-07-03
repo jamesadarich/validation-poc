@@ -1,15 +1,5 @@
-import { IValidationRule } from "../_interfaces/validation-rule.i";
-import { ValidationRules } from "../_symbols/validation-rules";
+import { addRule } from "../validation/add-rule";
 
 export function Required(target: object, decoratedPropertyKey: string, descriptor?: TypedPropertyDescriptor<() => any>) {
-    let validationRules: Array<IValidationRule> = Reflect.getMetadata(ValidationRules, target) || [];
-
-    validationRules.unshift({
-        isValid: (o) => o[decoratedPropertyKey],
-        propertyKey: decoratedPropertyKey,
-        message: "must be set"
-    });
-
-    // mark as setup test method
-    Reflect.defineMetadata(ValidationRules, validationRules, target);
+    addRule((o) => !!o[decoratedPropertyKey], "must be set", target, decoratedPropertyKey);
 }
