@@ -18,7 +18,9 @@ class InputExample extends React.Component<any, InputState> {
 
     private _onChange(event: any) {
         this.props.object[this.props.property] = (event.target as any).value;
+    }
 
+    private _validate() {
         this.setState({
             errorMessages: messagesFor(this.props.object, this.props.property)
         });
@@ -28,7 +30,7 @@ class InputExample extends React.Component<any, InputState> {
         return <div>
                 <Value>{this.props.object[this.props.property]}</Value>
                  <label>{this.props.label}</label>
-                 <input type="text" name="name" onChange={this._onChange.bind(this)} />
+                 <input type="text" name="name" onChange={this._onChange.bind(this)} onBlur={this._validate.bind(this)} />
                  <ul>
                     { this.state.errorMessages.map((message, index) => <li key={index}>{message}</li>) }
                  </ul>
@@ -49,6 +51,7 @@ ReactDOM.render(
         <InputExample object={user} property="givenName" label="First Name" />
         <InputExample object={user} property="familyName" label="Last Name" />
         <InputExample object={user} property="emailAddress" label="Email" />
+        <InputExample object={user} property="confirmEmailAddress" label="Confirm Email" />
     </div>,
    document.getElementById("react-example")
 );

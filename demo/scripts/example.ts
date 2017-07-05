@@ -1,4 +1,4 @@
-import { MinLength, Required, EmailAddress } from "../../src/main";
+import { MinLength, Required, EmailAddress, MatchesProperty } from "../../src/main";
 
 export class Example {
     
@@ -13,4 +13,9 @@ export class Example {
     @Required
     @EmailAddress
     emailAddress: string;
+
+    @Required
+    @EmailAddress
+    @MatchesProperty("emailAddress")
+    confirmEmailAddress: string;
 }

@@ -1,5 +1,9 @@
-import { Matches } from "./matches";
+import { MatchesRegex } from "./matches-regex";
+import { IDecorator } from "./decorator-builder";
 
-export function EmailAddress(target: object, decoratedPropertyKey: string, descriptor?: TypedPropertyDescriptor<() => any>) {
-    Matches(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)(target, decoratedPropertyKey, descriptor);
+const EmailAddress = MatchesRegex(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/)
+                        .withMessage("must be a valid email");
+
+export {
+    EmailAddress
 }
