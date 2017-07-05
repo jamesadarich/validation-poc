@@ -1,5 +1,5 @@
 import { addRule } from "../validation/add-rule";
-import { createDecorator, IDecorator } from "./decorator-builder";
+import { createDecorator, IValidationDecorator } from "./decorator-builder";
 
 export function MatchesProperty(propertyName: string) {
     return createDecorator(

@@ -1,10 +1,8 @@
-import { addRule } from "../validation/add-rule";
+import { createDecorator, IValidationDecorator } from ".//decorator-builder";
 
 export function MinLength(minimumLength: number) {
-    return (target: object, decoratedPropertyKey: string, descriptor?: TypedPropertyDescriptor<() => any>) => {
-        addRule((o) => o[decoratedPropertyKey] ? o[decoratedPropertyKey].length >= minimumLength : false,
-                "must be at least " + minimumLength + " characters",
-                target,
-                decoratedPropertyKey);
+    return createDecorator(
+                (o, v) => v ? v.length >= minimumLength: false,
+                "must be at least " + minimumLength + " characters");
     }
 }

@@ -1,4 +1,4 @@
-import { createDecorator, IDecorator } from "../decorators/decorator-builder";
+import { createDecorator, IValidationDecorator } from "../decorators/decorator-builder";
 
 export function MatchesRegex(regularExpression: RegExp) {
     return createDecorator(

@@ -1,13 +1,13 @@
 
 import { addRule } from "../validation/add-rule";
 
-export interface IDecorator {
+export interface IValidationDecorator {
     (target: object, decoratedPropertyKey: string, descriptor?: TypedPropertyDescriptor<() => any>): void;
 
     withMessage(message: string): this;
 }
 
-export function createDecorator(validationFunction: (object: { [id: string]: any }, value: any) => boolean, message: string): IDecorator {
+export function createDecorator(validationFunction: (object: { [id: string]: any }, value: any) => boolean, message: string): IValidationDecorator {
 
     let validationMessage = message;
 
@@ -16,7 +16,7 @@ export function createDecorator(validationFunction: (object: { [id: string]: any
                 validationMessage,
                 target,
                 decoratedPropertyKey);
-    }) as IDecorator);
+    }) as IValidationDecorator);
 
     decorator.withMessage = (message: string) => {
         validationMessage = message;

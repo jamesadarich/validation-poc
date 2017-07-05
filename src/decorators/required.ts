@@ -1,5 +1,9 @@
-import { addRule } from "../validation/add-rule";
+import { createDecorator, IValidationDecorator } from ".//decorator-builder";
 
-export function Required(target: object, decoratedPropertyKey: string, descriptor?: TypedPropertyDescriptor<() => any>) {
-    addRule((o) => !!o[decoratedPropertyKey], "must be set", target, decoratedPropertyKey);
+const Required = createDecorator(
+                (o, v) => !!v,
+                "must be set");
+
+export {
+    Required
 }
