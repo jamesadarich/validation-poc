@@ -1,7 +1,7 @@
 import { createDecorator, IValidationDecorator } from ".//decorator-builder";
 
 const Required = createDecorator(
-                (o, v) => !!v,
+                (parentObject, value) => !!value,
                 "must be set");
 
 export {

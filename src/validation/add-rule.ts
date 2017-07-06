@@ -1,7 +1,7 @@
 import { IValidationRule } from "../_interfaces/validation-rule.i";
 import { ValidationRules } from "../_symbols/validation-rules";
 
-export function addRule(rule: (object: { [id: string]: string }) => boolean, message: string, target: object, propertyKey: string) {
+export function addRule<T, S extends keyof T>(rule: (object: T) => boolean, message: string, target: T, propertyKey: S) {
     let validationRules: Array<IValidationRule> = Reflect.getMetadata(ValidationRules, target) || [];
 
     validationRules.unshift({

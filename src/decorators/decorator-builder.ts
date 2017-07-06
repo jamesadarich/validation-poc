@@ -1,22 +1,22 @@
 
 import { addRule } from "../validation/add-rule";
 
-export interface IValidationDecorator {
-    (target: object, decoratedPropertyKey: string, descriptor?: TypedPropertyDescriptor<() => any>): void;
+export interface IValidationDecorator<T, S extends keyof T> {
+    (target: T, decoratedPropertyKey: S, descriptor?: TypedPropertyDescriptor<T[S]>): void;
 
     withMessage(message: string): this;
 }
 
-export function createDecorator(validationFunction: (object: { [id: string]: any }, value: any) => boolean, message: string): IValidationDecorator {
+export function createDecorator<T, S extends keyof T>(validationFunction: (parentObject: T, value: T[S]) => boolean, message: string): IValidationDecorator<T, S> {
 
     let validationMessage = message;
 
-    const decorator = (((target: { [id: string]: any }, decoratedPropertyKey: string, descriptor?: TypedPropertyDescriptor<() => any>) => {
-        addRule((object) => validationFunction(object, object[decoratedPropertyKey]),
+    const decorator = (((target: T, decoratedPropertyKey: S, descriptor?: TypedPropertyDescriptor<T[S]>) => {
+        addRule<T, S>((object) => validationFunction(object, object[decoratedPropertyKey]),
                 validationMessage,
                 target,
                 decoratedPropertyKey);
-    }) as IValidationDecorator);
+    }) as IValidationDecorator<T, S>);
 
     decorator.withMessage = (message: string) => {
         validationMessage = message;
@@ -25,3 +25,23 @@ export function createDecorator(validationFunction: (object: { [id: string]: any
 
     return decorator;
 }
+
+/*
+export function createDecorator<T, S extends keyof T>(validationFunction: (parentObject: T, value: T[S]) => boolean, message: string): IValidationDecorator<T, S> {
+
+    let validationMessage = message;
+
+    const decorator = (((target: T, decoratedPropertyKey: S, descriptor?: TypedPropertyDescriptor<() => any>) => {
+        addRule<T, S>((object) => validationFunction(object, object[decoratedPropertyKey]),
+                validationMessage,
+                target,
+                decoratedPropertyKey);
+    }) as IValidationDecorator<T,S>);
+
+    decorator.withMessage = (message: string) => {
+        validationMessage = message;
+        return decorator;
+    };
+
+    return decorator;
+}*/
