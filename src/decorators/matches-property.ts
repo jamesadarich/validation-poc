@@ -3,8 +3,8 @@ import { createDecorator, IValidationDecorator } from "./decorator-builder";
 
 
 
-export function MatchesProperty<T, S extends keyof T>(propertyName: S) {
-    return createDecorator<T, S>(
+export function MatchesProperty(propertyName: string) {
+    return createDecorator(
                 (parentObject, value) => parentObject[propertyName] === value,
                 "must match " + propertyName.replace(/[A-Z]/, lowerSentenceCase));
 }
