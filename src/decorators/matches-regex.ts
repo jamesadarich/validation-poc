@@ -4,8 +4,8 @@ export type N<PropertyKey, PropertyValue, ParentObject> = {
     [PropertyKey in keyof ParentObject]: PropertyValue;
 }
 
-export function MatchesRegex<T extends N<S, string, T>, S extends keyof T>(regularExpression: RegExp) {
-    return createDecorator<T, S>(
+export function MatchesRegex(regularExpression: RegExp) {
+    return createDecorator<string>(
                 (parentObject, value) => regularExpression.test(value),
                 "must match given pattern");
 }
