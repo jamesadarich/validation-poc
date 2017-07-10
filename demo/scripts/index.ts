@@ -1,8 +1,8 @@
-import { Example } from "./example";
+import { User } from "./models/user";
 import { isValid, messagesFor } from "../../src/main";
 import { plainToClass } from "class-transformer";
 
-const example = new Example();
+const example = new User();
  
 (window as any).messagesFor = messagesFor;
 (window as any).isValid = isValid;
@@ -13,7 +13,7 @@ window.onload = () => {
 }
 
 (window as any).apiTest = (user: object) => {
-    const deserializedUser = plainToClass(Example, user);
+    const deserializedUser = plainToClass(User, user);
 
     return isValid(deserializedUser) ? "everything is good" : messagesFor(deserializedUser);
 }

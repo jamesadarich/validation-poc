@@ -1,7 +1,9 @@
-import { MinLength, Required, EmailAddress, MatchesProperty, createDecorator } from "../../src/main";
-import { IsAnAdult } from "./custom-decorators";
+import { MinLength, Required, EmailAddress, MatchesProperty } from "../../../src/main";
+import { IsAnAdult } from "../custom-decorators";
+import { Address } from "./address";
+import { Type } from "class-transformer";
 
-export class Example {
+export class User {
     
     @Required
     @MinLength(3)
@@ -11,6 +13,7 @@ export class Example {
     @MinLength(3)
     familyName: number;
 
+    @Required
     @IsAnAdult
     age: number;
 
@@ -22,4 +25,8 @@ export class Example {
     @EmailAddress
     @MatchesProperty("emailAddress")
     confirmEmailAddress: string;
+
+    @Required
+    @Type(() => Address)
+    address: Address;
 }
