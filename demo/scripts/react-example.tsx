@@ -22,7 +22,7 @@ class InputExample extends React.Component<any, InputState> {
 
     private _validate() {
         this.setState({
-            errorMessages: validate(this.props.object, this.props.property)
+            errorMessages: validate(this.props.object, this.props.property)[this.props.property]
         });
     }
 
