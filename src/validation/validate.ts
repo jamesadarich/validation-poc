@@ -15,7 +15,11 @@ export function validate(obj: object, property?: string) {
                     if (!errorObject[rule.propertyKey]) {
                         errorObject[rule.propertyKey] = [];
                     }
-                    errorObject[rule.propertyKey].push(rule.isValid(obj as { [property: string]: boolean }) ? undefined : rule.message);
+                    
+                    if (rule.isValid(obj as { [property: string]: boolean }) === false) {
+                        errorObject[rule.propertyKey].push(rule.message);
+                    } 
+
                     return errorObject;
                 }, {})
 }
