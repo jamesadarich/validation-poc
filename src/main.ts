@@ -1,6 +1,6 @@
 import "reflect-metadata";
 import { isValid } from "./validation/is-valid";
-import { messagesFor } from "./validation/messages-for";
+import { validate } from "./validation/validate";
 import { MinLength } from "./decorators/min-length";
 import { Required } from "./decorators/required";
 import { MatchesProperty } from "./decorators/matches-property";
@@ -10,7 +10,7 @@ import { EmailAddress } from "./decorators/email-address";
 
 export {
     isValid,
-    messagesFor,
+    validate,
     Required,
     IValidationDecorator,
     createDecorator,

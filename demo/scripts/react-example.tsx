@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { messagesFor } from "../../src/main";
+import { validate } from "../../src/main";
 
 interface InputState {
     errorMessages: Array<string>
@@ -22,7 +22,7 @@ class InputExample extends React.Component<any, InputState> {
 
     private _validate() {
         this.setState({
-            errorMessages: messagesFor(this.props.object, this.props.property)
+            errorMessages: validate(this.props.object, this.props.property)
         });
     }
 
