@@ -12,7 +12,10 @@ export function validate(obj: object, property?: string) {
                 .filter(x => property ? x.propertyKey === property : true)
                 .concat(subObjectRules)
                 .reduce((errorObject: { [propery: string]: Array<string> }, rule) => {
-                    errorObject[rule.propertyKey] = [ rule.isValid(obj as { [property: string]: boolean }) ? undefined : rule.message ];
+                    if (!errorObject[rule.propertyKey]) {
+                        errorObject[rule.propertyKey] = [];
+                    }
+                    errorObject[rule.propertyKey].push(rule.isValid(obj as { [property: string]: boolean }) ? undefined : rule.message);
                     return errorObject;
                 }, {})
 }
