@@ -13,9 +13,9 @@ export class User {
     @MinLength(3)
     familyName: number;
 
-    @Required
+/*    @Required
     @IsAnAdult
-    age: number;
+    age: number;*/
 
     @Required
     @EmailAddress
@@ -26,7 +26,7 @@ export class User {
     @MatchesProperty("emailAddress")
     confirmEmailAddress: string;
 
-    @Required
+/*    @Required
     @Type(() => Address)
-    address: Address;
+    address: Address;*/
 }

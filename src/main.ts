@@ -7,6 +7,8 @@ import { MatchesProperty } from "./decorators/matches-property";
 import { IValidationDecorator, createDecorator } from "./decorators/decorator-builder";
 import { MatchesRegex } from "./decorators/matches-regex";
 import { EmailAddress } from "./decorators/email-address";
+import { watchValidationIssues } from "./validation/watch-validation-issues";
+import { ValidationResult } from "./validation/validation-result";
 
 export {
     isValid,
@@ -17,5 +19,7 @@ export {
     MinLength,
     MatchesProperty,
     MatchesRegex,
-    EmailAddress
+    EmailAddress,
+    watchValidationIssues,
+    ValidationResult
 }

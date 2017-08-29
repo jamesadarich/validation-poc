@@ -6,8 +6,9 @@
     <body>
         <script>
             function updateValidationMessages() {
-                document.getElementById("messages").innerHTML = messagesFor(example, "givenName")
-                                                                        .map(message => `<li>${message}</li>`)
+                document.getElementById("messages").innerHTML = validate(example, "givenName")
+                                                                        .issues
+                                                                        .map(issue => `<li>${issue.message}</li>`)
                                                                         .join("");
             }
         </script>

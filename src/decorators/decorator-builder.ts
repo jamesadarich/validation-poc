@@ -7,12 +7,12 @@ export interface IValidationDecorator<T, S extends keyof T> {
     withMessage(message: string): this;
 }
 
-export function createDecorator<ValueType = any>(validationFunction: (parentObject: any, value: ValueType) => boolean, message: string): IValidationDecorator<any, string> {
+export function createDecorator<ValueType = any>(validationFunction: (parentObject: any, value: ValueType, decoratedPropertyKey?: string) => boolean, message: string): IValidationDecorator<any, string> {
 
     let validationMessage = message;
 
     const decorator = (((target: any, decoratedPropertyKey: string) => {
-        addRule((object) => validationFunction(object, object[decoratedPropertyKey]),
+        addRule((object) => validationFunction(object, object[decoratedPropertyKey], decoratedPropertyKey),
                 validationMessage,
                 target,
                 decoratedPropertyKey);

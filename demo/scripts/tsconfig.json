@@ -5,11 +5,10 @@
       "moduleResolution": "node",
       "outDir": "../dist",
       "jsx": "react",
-      "declaration": true,
       "experimentalDecorators": true,
       "noImplicitAny": true,
       "sourceMap": true,
-      "lib": [ "es5", "dom" ],
+      "lib": [ "es5", "dom", "es2015.promise" ],
       "newLine": "LF"
    },
    "buildOnSave": false,

@@ -4,7 +4,7 @@ import { plainToClass } from "class-transformer";
 
 const example = new User();
  
-(window as any).messagesFor = validate;
+(window as any).validate = validate;
 (window as any).isValid = isValid;
 (window as any).example = example;
 
