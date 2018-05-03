@@ -7,6 +7,7 @@ import { MatchesProperty } from "./decorators/matches-property";
 import { IValidationDecorator, createDecorator } from "./decorators/decorator-builder";
 import { MatchesRegex } from "./decorators/matches-regex";
 import { EmailAddress } from "./decorators/email-address";
+import { UniqueItems } from "./decorators/unique-items";
 import { watchValidationIssues } from "./validation/watch-validation-issues";
 import { ValidationResult } from "./validation/validation-result";
 
@@ -21,5 +22,6 @@ export {
     MatchesRegex,
     EmailAddress,
     watchValidationIssues,
-    ValidationResult
+    ValidationResult,
+    UniqueItems
 }

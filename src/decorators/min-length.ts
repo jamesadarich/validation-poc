@@ -1,4 +1,4 @@
-import { createDecorator, IValidationDecorator } from ".//decorator-builder";
+import { createDecorator, IValidationDecorator } from "./decorator-builder";
 
 export type N<PropertyKey, PropertyValue, ParentObject> = {
     [PropertyKey in keyof ParentObject]: PropertyValue;

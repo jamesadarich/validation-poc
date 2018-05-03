@@ -1,4 +1,4 @@
-import { MinLength, Required, EmailAddress, MatchesProperty } from "../../../src/main";
+import { MinLength, Required, EmailAddress, MatchesProperty, UniqueItems } from "../../../src/main";
 import { IsAnAdult } from "../custom-decorators";
 import { Address } from "./address";
 import { Type } from "class-transformer";
@@ -25,6 +25,9 @@ export class User {
     @EmailAddress
     @MatchesProperty("emailAddress")
     confirmEmailAddress: string;
+
+    @UniqueItems
+    favouriteFoods: Array<string> = [];
 
 /*    @Required
     @Type(() => Address)
